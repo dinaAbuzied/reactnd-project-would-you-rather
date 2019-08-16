@@ -13,7 +13,7 @@ export const recieveUsers = (users) => {
 export const handleRecieveUsers = () => {
     return (dispatch) => {
         dispatch(showLoading());
-        return getUsers().then(({users}) => {
+        return getUsers().then((users) => {
             dispatch(recieveUsers(users));
             dispatch(hideLoading());
         });

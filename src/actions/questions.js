@@ -13,7 +13,7 @@ export const recieveQuestions = (questions) => {
 export const handleRecieveQuestions = () => {
     return (dispatch) => {
         dispatch(showLoading());
-        return getQuestions().then(({questions}) => {
+        return getQuestions().then((questions) => {
             dispatch(recieveQuestions(questions));
             dispatch(hideLoading());
         });
