@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { withRouter } from "react-router";
 import { handleInitData } from "../actions/shared";
 import Login from './Login/Login';
 import Home from "./Home/Home";
 import AppNav from "./AppNav/AppNav";
+import NotFound from "./NotFound";
 
 class App extends Component {
   componentDidMount() {
@@ -23,12 +24,13 @@ class App extends Component {
           ) :
             <AppNav />
         }
-        <Route exact path="/login" render={() => (
-          <Login />
-        )} />
-        <Route exact path="/home" render={() => (
-          <Home />
-        )} />
+        {/* TODO: remove AppNav from 404 page */}
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
+          <Route path="/login" exact component={Login} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     )
   }
