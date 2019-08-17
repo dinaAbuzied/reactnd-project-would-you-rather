@@ -1,0 +1,25 @@
+.home .tabs-container {
+    width: 500px;
+    margin: 20px auto 0;
+}
+
+.home .tabs-container .nav-item {
+    width: 50%;
+    text-align: center;
+    border-color: #dee2e6;
+    color: #495057;
+}
+
+.home .tabs-container .nav-item.active {
+    background-color: rgba(0,0,0,.03);
+    font-weight: 700;
+    color: #007bff;
+}
+
+.home .tabs-container .tab-content {
+    border: 1px solid #dee2e6;
+    border-top: 0;
+    padding: 10px 10px 0;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}

@@ -1,0 +1,35 @@
+.question {
+    margin-bottom: 10px;
+}
+
+.question .card-body {
+    display: flex;
+}
+
+.question .img-container {
+    width: 100px;
+    margin: 0 30px;
+}
+
+.question .img-container img {
+    width: 100%;
+}
+
+.question .details {
+    padding-left: 20px;
+    border-left: 1px solid rgba(0,0,0,.125);
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.question .details .card-subtitle {
+    margin: 0;
+}
+
+.question .details p {
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
