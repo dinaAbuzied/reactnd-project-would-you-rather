@@ -1,0 +1,30 @@
+.app-nav.navbar {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0;
+}
+
+.app-nav .nav-tabs {
+    border: none;
+}
+
+.app-nav .navbar-nav .nav-link,
+.app-nav .navbar-collapse .nav-link,
+.app-nav .navbar-collapse .navbar-text {
+    color: rgba(0,0,0,0.7);
+}
+
+.app-nav .navbar-nav .active.nav-link {
+    color: white;
+    border-color: #007bff;
+    background: #007bff;
+}
+
+.app-nav .navbar-collapse .img-container {
+    display: inline-block;
+    width: 30px;
+    margin-left: 20px;
+}
+
+.app-nav .navbar-collapse .img-container img {
+    width: 100%;
+}
