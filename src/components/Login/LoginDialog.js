@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { setAuthedUser } from "../../actions/authedUser";
 import Card from 'react-bootstrap/Card';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
 import "./LoginDialog.css"
 
 
@@ -51,7 +51,7 @@ class LoginDialog extends Component {
                             }
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Button onClick={() => signIn(this.state.selectedUser)} variant="primary" disabled={!this.state.selectedUser}>Sign in</Button>
+                    <Link disabled={!this.state.selectedUser} className="btn btn-primary" onClick={() => signIn(this.state.selectedUser)} to="/home">Sign in</Link>
                 </Card.Body>
             </Card>
         )
