@@ -1,16 +1,16 @@
 import { getInitialData } from "../utils/api";
-import { setLocation } from "./location";
+import { setPath } from "./path";
 import { recieveQuestions } from "./questions";
 import { recieveUsers } from "./users";
 import { showLoading, hideLoading } from "react-redux-loading";
 
-export const handleInitData = (location) => {
+export const handleInitData = (path) => {
     return (dispatch) => {
         dispatch(showLoading());
         return getInitialData().then(({users, questions}) => {
             dispatch(recieveQuestions(questions));
             dispatch(recieveUsers(users));
-            dispatch(setLocation(location));
+            dispatch(setPath(path));
             dispatch(hideLoading());
         });
     }
