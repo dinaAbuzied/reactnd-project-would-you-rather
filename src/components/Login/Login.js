@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading";
-import { handleRecieveUsers } from "../../actions/users";
 import LoginDialog from "./LoginDialog"
 
 class Login extends Component {
-    componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch(handleRecieveUsers());
-    }
     render() {
         const { loading } = this.props;
         return (
