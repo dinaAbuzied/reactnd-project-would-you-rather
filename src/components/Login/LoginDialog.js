@@ -18,7 +18,8 @@ class LoginDialog extends Component {
         })
     }
     render() {
-        const { usersArr, signIn } = this.props;
+        const { usersArr, path, signIn } = this.props;
+        console.log(this.props);
         return (
             <Card className="login-dialog">
                 <Card.Header>
@@ -51,18 +52,19 @@ class LoginDialog extends Component {
                             }
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Link disabled={!this.state.selectedUser} className="btn btn-primary" onClick={() => signIn(this.state.selectedUser)} to="/home">Sign in</Link>
+                    <Link disabled={!this.state.selectedUser} className="btn btn-primary" onClick={() => signIn(this.state.selectedUser)} to={path}>Sign in</Link>
                 </Card.Body>
             </Card>
         )
     }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, path }) => {
     return {
         usersArr: Object.keys(users).map((user) => {
             return users[user];
-        })
+        }),
+        path
     }
 }
 

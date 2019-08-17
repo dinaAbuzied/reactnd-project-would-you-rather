@@ -10,7 +10,7 @@ import AppNav from "./AppNav/AppNav";
 class App extends Component {
   componentDidMount() {
     const { dispatch, location } = this.props;
-    dispatch(handleInitData(location.pathname));
+    dispatch(handleInitData(location.pathname === "/login" ? "/home" : location.pathname));
     console.log(this.props);
   }
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
           !authedUser ? (
             <Redirect to="/login" />
           ) :
-            <AppNav selected="home" />
+            <AppNav />
         }
         <Route exact path="/login" render={() => (
           <Login />
