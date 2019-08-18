@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 import Leaderboard from "./Leaderboard/Leaderboard";
 import AppNav from "./AppNav/AppNav";
 import NotFound from "./NotFound";
+import NewQuestion from "./NewQuestion/NewQuestion";
 
 class App extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class App extends Component {
         <Switch>
           <Route path="/home" exact component={Home} />
           <Route path="/leaderboard" exact component={Leaderboard} />
+          <Route path="/add" exact component={NewQuestion} />
           <Route path="/login" exact component={Login} />
           <Route component={NotFound} />
         </Switch>

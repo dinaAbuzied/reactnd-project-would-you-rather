@@ -19,10 +19,10 @@ class AppNav extends Component {
                         <Link onClick={() => changePath("/home")} className={path === "/home" ? "active nav-link" : "nav-link"} to="/home">Home</Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Link onClick={() => changePath("/newQuestions")} className={path === "/newQuestions" ? "active nav-link" : "nav-link"} to="/newQuestions">New Questions</Link>
+                        <Link onClick={() => changePath("/add")} className={path === "/add" ? "active nav-link" : "nav-link"} to="/add">New Questions</Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Link onClick={() => changePath("/Leaderboard")} className={path === "/Leaderboard" ? "active nav-link" : "nav-link"} to="/Leaderboard">Leaderboard</Link>
+                        <Link onClick={() => changePath("/leaderboard")} className={path === "/leaderboard" ? "active nav-link" : "nav-link"} to="/leaderboard">Leaderboard</Link>
                     </Nav.Item>
                 </Nav>
                 <Navbar.Collapse className="justify-content-end">
