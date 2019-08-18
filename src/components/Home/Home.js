@@ -40,20 +40,12 @@ const mapStateToProps = ({ questions, authedUser }) => {
     })
     return {
         answered: questionsArr.filter((question) => {
-            return question.optionOne.votes.includes(authedUser.id) ||
-                question.optionTwo.votes.includes(authedUser.id);
+            return Object.keys(authedUser.answers).includes(question.id);
         }).sort((a, b) => b.timestamp - a.timestamp),
         unanswered: questionsArr.filter((question) => {
-            return !question.optionOne.votes.includes(authedUser.id) &&
-                !question.optionTwo.votes.includes(authedUser.id);
+            return !Object.keys(authedUser.answers).includes(question.id);
         }).sort((a, b) => b.timestamp - a.timestamp)
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        //   signIn: (user) => dispatch(setAuthedUser(user))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps)(Home)

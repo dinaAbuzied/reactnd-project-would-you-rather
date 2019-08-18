@@ -12,21 +12,19 @@ class App extends Component {
   componentDidMount() {
     const { dispatch, location } = this.props;
     dispatch(handleInitData(location.pathname));
-    console.log(this.props);
   }
   render() {
     const { authedUser } = this.props
     return (
       <div className="App">
         {
-          !authedUser ? (
+          !authedUser ?
             <Redirect to="/login" />
-          ) :
+          :
             <AppNav />
         }
         {/* TODO: remove AppNav from 404 page */}
         <Switch>
-          <Route path="/" exact component={Home} />
           <Route path="/home" exact component={Home} />
           <Route path="/login" exact component={Login} />
           <Route component={NotFound} />
