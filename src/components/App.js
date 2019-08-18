@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { withRouter } from "react-router";
@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     const { authedUser } = this.props
     return (
-      <div className="App">
+      <Fragment>
         {
           !authedUser ?
             <Redirect to="/login" />
@@ -33,7 +33,7 @@ class App extends Component {
           <Route path="/login" exact component={Login} />
           <Route component={NotFound} />
         </Switch>
-      </div>
+      </Fragment>
     )
   }
 }

@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 import { handleSaveQuestion } from "../../actions/shared";
 import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import "./NewQuestion.css"
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
+import "./NewQuestion.css";
 
 
 class NewQuestion extends Component {
     state = {
         firstQue: '',
         secondQue: '',
+        loading: false,
         redirect: false
     }
     addFirstQue = (value) => {
@@ -27,6 +29,9 @@ class NewQuestion extends Component {
     onSubmit = (event) => {
         event.preventDefault();
         const { dispatch, authedUser } = this.props;
+        this.setState({
+            loading: true
+        })
         dispatch(handleSaveQuestion(
             {
                 author: authedUser.id,
@@ -43,6 +48,7 @@ class NewQuestion extends Component {
         if (this.state.redirect) {
             return <Redirect push to="/home" />;
         }
+        const { loading, firstQue, secondQue} = this.state;
         return (
             <div className="new-question">
                 <Card>
@@ -58,7 +64,24 @@ class NewQuestion extends Component {
                                 <Form.Text>OR</Form.Text>
                                 <Form.Control type="text" onChange={(event) => this.addSecondQue(event.target.value)} placeholder="Enter Option Two Text Here" />
                             </Form.Group>
-                            <Button disabled={this.state.firstQue === '' || this.state.secondQue === ''} onClick={(event) => this.onSubmit(event)} variant="primary" type="submit">Submit</Button>
+                            <Button disabled={firstQue === '' || secondQue === '' || loading} onClick={(event) => this.onSubmit(event)} variant="primary" type="submit">
+                                {
+                                    loading ? (
+                                        <Fragment>
+                                            <Spinner
+                                                as="span"
+                                                animation="border"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            />
+                                            Submiting
+                                        </Fragment>) : (
+                                            "Submit"
+                                        )
+
+                                }
+                            </Button>
                         </Form>
                     </Card.Body>
                 </Card>

@@ -43,7 +43,6 @@
     width: 100%;
 }
 
-/* .new-question .btn-primary[disabled] {
-    opacity: 0.65;
-    pointer-events: none;
-} */
+.new-question .btn-primary .spinner-border {
+    margin-right: 10px;
+}
