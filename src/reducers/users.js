@@ -1,4 +1,4 @@
-import { RECIEVE_USERS } from "../actions/users";
+import { RECIEVE_USERS, ADD_QUESTION_TO_USER } from "../actions/users";
 
 /**
  * @description this reducer handles the actions handling 
@@ -11,6 +11,14 @@ const users = (state = {}, action) => {
     switch (action.type) {
         case RECIEVE_USERS:
             return { ...action.users };
+        case ADD_QUESTION_TO_USER:
+            return {
+                ...state,
+                [action.userID] : {
+                    ...state[action.userID],
+                    questions: [...state[action.userID].questions, action.queID]
+                }
+            }
         default:
             return state;
     }
