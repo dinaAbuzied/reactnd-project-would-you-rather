@@ -25,11 +25,9 @@ export const handleInitData = (path) => {
 
 export const handleSaveQuestion = (que, path) => {
     return (dispatch) => {
-        dispatch(showLoading());
         return saveQuestion(que).then((formattedQue) => {
             dispatch(saveNewQuestion(formattedQue));
             dispatch(setPath(path));
-            dispatch(hideLoading());
         });
     }
 }
