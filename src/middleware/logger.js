@@ -1,3 +1,7 @@
+/**
+ * @description this logger function logs every action 
+ *              fired helping to track them
+ */
 const logger = (store) => (next) => (action) => {
     console.group(action.type)
       console.log('The action: ', action)
