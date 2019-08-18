@@ -2,7 +2,7 @@ export const RECIEVE_QUESTIONS = "RECIEVE_QUESTIONS";
 
 /**
  * @description used to retrieve from the API set of question
- * @param {Array} questions containes the loaded question from the API
+ * @param {Object} questions containes the loaded question from the API
  */
 export const recieveQuestions = (questions) => {
     return {
