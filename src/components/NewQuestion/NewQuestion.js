@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
-import { setPath } from "../../actions/path";
+import { handleSaveQuestion } from "../../actions/shared";
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import "./NewQuestion.css"
 
 
 class NewQuestion extends Component {
     state = {
         firstQue: '',
-        secondQue: ''
+        secondQue: '',
+        redirect: false
     }
     addFirstQue = (value) => {
         this.setState({
@@ -22,8 +24,25 @@ class NewQuestion extends Component {
             secondQue: value.trim()
         })
     }
+    onSubmit = (event) => {
+        event.preventDefault();
+        const { dispatch, authedUser } = this.props;
+        dispatch(handleSaveQuestion(
+            {
+                author: authedUser.id,
+                optionOneText: this.state.firstQue,
+                optionTwoText: this.state.secondQue
+            },
+            "/home")).then(() => {
+                this.setState({
+                    redirect: true
+                })
+            });
+    }
     render() {
-        const { changePath } = this.props;
+        if (this.state.redirect) {
+            return <Redirect push to="/home" />;
+        }
         return (
             <div className="new-question">
                 <Card>
@@ -39,8 +58,8 @@ class NewQuestion extends Component {
                                 <Form.Text>OR</Form.Text>
                                 <Form.Control type="text" onChange={(event) => this.addSecondQue(event.target.value)} placeholder="Enter Option Two Text Here" />
                             </Form.Group>
+                            <Button disabled={this.state.firstQue === '' || this.state.secondQue === ''} onClick={(event) => this.onSubmit(event)} variant="primary" type="submit">Submit</Button>
                         </Form>
-                        <Link onClick={() => changePath("/home")} disabled={this.state.firstQue === '' || this.state.secondQue === ''} className="btn btn-primary" to='/home'>Submit</Link>
                     </Card.Body>
                 </Card>
             </div>
@@ -54,10 +73,4 @@ const mapStateToProps = ({ authedUser }) => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        changePath: (path) => dispatch(setPath(path))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewQuestion) 
+export default connect(mapStateToProps)(NewQuestion) 

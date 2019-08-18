@@ -1,7 +1,8 @@
 import { getInitialData } from "../utils/api";
 import { setPath } from "./path";
-import { recieveQuestions } from "./questions";
+import { recieveQuestions, saveNewQuestion } from "./questions";
 import { recieveUsers } from "./users";
+import { saveQuestion } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 /**
@@ -16,6 +17,17 @@ export const handleInitData = (path) => {
         return getInitialData().then(({users, questions}) => {
             dispatch(recieveQuestions(questions));
             dispatch(recieveUsers(users));
+            dispatch(setPath(path));
+            dispatch(hideLoading());
+        });
+    }
+}
+
+export const handleSaveQuestion = (que, path) => {
+    return (dispatch) => {
+        dispatch(showLoading());
+        return saveQuestion(que).then((formattedQue) => {
+            dispatch(saveNewQuestion(formattedQue));
             dispatch(setPath(path));
             dispatch(hideLoading());
         });

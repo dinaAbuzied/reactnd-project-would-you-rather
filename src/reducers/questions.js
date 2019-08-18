@@ -13,7 +13,10 @@ const questions = (state = {}, action) => {
         case RECIEVE_QUESTIONS:
             return { ...action.questions };
         case NEW_QUESTION:
-            return { ...action.question };
+            return { 
+                ...state,
+                [action.question.id]: action.question
+             };
         default:
             return state;
     }

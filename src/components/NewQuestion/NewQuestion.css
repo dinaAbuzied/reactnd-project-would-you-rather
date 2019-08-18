@@ -43,7 +43,7 @@
     width: 100%;
 }
 
-.new-question .btn-primary[disabled] {
+/* .new-question .btn-primary[disabled] {
     opacity: 0.65;
     pointer-events: none;
-}
+} */
