@@ -1,0 +1,50 @@
+.user {
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    flex-direction: row;
+}
+
+.user .img-container {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.user .img-container img {
+    width: 100%;
+}
+
+.user .details {
+    padding: 0 20px;
+    border-left: 1px solid rgba(0,0,0,.125);
+    border-right: 1px solid rgba(0,0,0,.125);
+    flex: 1;
+}
+
+.user .details .card-title {
+    margin-bottom: 20px;
+}
+
+.user .details p {
+    margin-bottom: 0;
+}
+
+.user .details p:first-of-type {
+   border-bottom: 1px solid rgba(0,0,0,.125);
+   margin-bottom: 5px;
+   padding-bottom: 5px;
+}
+
+.user .details span {
+   float: right;
+}
+
+.user .score {
+    margin-left: 20px;
+}
+
+.user .score .card-body {
+    color: #007bff;
+    font-weight: 900;
+    font-size: 18px;
+}

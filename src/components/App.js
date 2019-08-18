@@ -5,6 +5,7 @@ import { withRouter } from "react-router";
 import { handleInitData } from "../actions/shared";
 import Login from './Login/Login';
 import Home from "./Home/Home";
+import Leaderboard from "./Leaderboard/Leaderboard";
 import AppNav from "./AppNav/AppNav";
 import NotFound from "./NotFound";
 
@@ -26,6 +27,7 @@ class App extends Component {
         {/* TODO: remove AppNav from 404 page */}
         <Switch>
           <Route path="/home" exact component={Home} />
+          <Route path="/leaderboard" exact component={Leaderboard} />
           <Route path="/login" exact component={Login} />
           <Route component={NotFound} />
         </Switch>
