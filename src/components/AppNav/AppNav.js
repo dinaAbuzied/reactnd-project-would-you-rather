@@ -30,7 +30,9 @@ class AppNav extends Component {
                         {"Hello, " + authedUser.name}
                     </Navbar.Text>
                     <div className="img-container">
-                        <Image src={"assets/img/" + authedUser.avatarURL} roundedCircle />
+                        {path.includes('/questions/') ?
+                            <Image src={"../assets/img/" + authedUser.avatarURL} roundedCircle /> :
+                            <Image src={"assets/img/" + authedUser.avatarURL} roundedCircle />}
                     </div>
                     <Nav.Item>
                         <Link onClick={() => signout()} className="nav-link" to="/login">Logout</Link>
