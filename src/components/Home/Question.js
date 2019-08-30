@@ -23,7 +23,7 @@ class Question extends Component {
                     <div className="details">
                         <Card.Subtitle>Would You Rather</Card.Subtitle>
                         <p>{"..." + que.optionOne.text + "..."}</p>
-                        <Link onClick={() => changePath("/questions/:" + que.id)} to={"/questions/:" + que.id} className="btn btn-primary">
+                        <Link onClick={() => changePath("/questions/" + que.id)} to={"/questions/" + que.id} className="btn btn-primary">
                             View Poll
                         </Link>
                     </div>

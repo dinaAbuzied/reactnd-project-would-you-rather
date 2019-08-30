@@ -7,6 +7,7 @@ import Login from './Login/Login';
 import Home from "./Home/Home";
 import Leaderboard from "./Leaderboard/Leaderboard";
 import AppNav from "./AppNav/AppNav";
+import ViewQuestion from "./ViewQuestion/ViewQuestion";
 import NotFound from "./NotFound";
 import NewQuestion from "./NewQuestion/NewQuestion";
 
@@ -21,18 +22,24 @@ class App extends Component {
       <Fragment>
         {
           !authedUser ?
-            <Redirect to="/login" />
-          :
-            <AppNav />
+            <Fragment>
+              <Redirect to="/login" />
+              <Route path="/login" exact component={Login} />
+            </Fragment>
+            :
+            <Fragment>
+              <AppNav />
+              {/* TODO: remove AppNav from 404 page */}
+              <Switch>
+                <Route path="/home" exact component={Home} />
+                <Route path="/leaderboard" exact component={Leaderboard} />
+                <Route path="/add" exact component={NewQuestion} />
+                <Route path="/questions/:question_id" exact component={ViewQuestion} />
+                <Route path="/login" exact component={Login} />
+                <Route component={NotFound} />
+              </Switch>
+            </Fragment>
         }
-        {/* TODO: remove AppNav from 404 page */}
-        <Switch>
-          <Route path="/home" exact component={Home} />
-          <Route path="/leaderboard" exact component={Leaderboard} />
-          <Route path="/add" exact component={NewQuestion} />
-          <Route path="/login" exact component={Login} />
-          <Route component={NotFound} />
-        </Switch>
       </Fragment>
     )
   }
