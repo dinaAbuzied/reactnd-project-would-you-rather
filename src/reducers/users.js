@@ -4,6 +4,8 @@ import { RECIEVE_USERS, ADD_QUESTION_TO_USER, ADD_ANSWER_TO_USER } from "../acti
  * @description this reducer handles the actions handling 
  *              - recieving the loaded users and 
  *                storing them in redux store
+ *              - adding new questions to current user
+ *              - adding answer to selected question
  * @param {object} state contains the loaded users from API
  * @param {object} action containes the fired action
  */

@@ -24,6 +24,12 @@ export const handleInitData = (path) => {
     }
 }
 
+/**
+ * @description takes new question details and current user id and 
+ *              save it and store the entered URL in Redux store
+ * @param {author: string, optionOneText: string, optionTwoText: string} que object containing question detials
+ * @param {string} path contains current URL
+ */
 export const handleSaveQuestion = (que, path) => {
     return (dispatch) => {
         return saveQuestion(que).then((formattedQue) => {
@@ -35,13 +41,18 @@ export const handleSaveQuestion = (que, path) => {
     }
 }
 
-export const handleSaveQuestionAnswer = (authedUser, qid, answer, path) => {
+/**
+ * @param {string} authedUser current user id
+ * @param {string} qid selected question id
+ * @param {string} answer string representing selected option 
+ *                          (either 'optionOne' - 'optionTwo')
+ */
+export const handleSaveQuestionAnswer = (authedUser, qid, answer) => {
     return (dispatch) => {
         return saveQuestionAnswer({ authedUser, qid, answer }).then(() => {
             dispatch(addAnswerToAuthedUser(qid, answer));
             dispatch(addAnswerToUser(authedUser, qid, answer));
             dispatch(answerQuestion(authedUser, qid, answer));
-            // dispatch(setPath(path));
         });
     }
 }

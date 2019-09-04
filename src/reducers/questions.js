@@ -5,6 +5,7 @@ import { RECIEVE_QUESTIONS, NEW_QUESTION, ANSWER_QUESTION } from "../actions/que
  *              - recieving the loaded questions and 
  *                storing them in redux store
  *              - saving new question added by current user
+ *              - saving answers given by current user
  * @param {object} state contains the loaded question from API
  * @param {object} action containes the fired action
  */

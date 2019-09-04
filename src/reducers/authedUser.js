@@ -4,7 +4,8 @@ import { SET_AUTHED_USER, REMOVE_AUTHED_USER, ADD_QUESTION_TO_AUTHED_USER, ADD_A
  * @description this reducer handles the actions handling 
  *              authenticating users on login by storing 
  *              the user data in redux store and removing 
- *              the user from store on logout
+ *              the user from store on logout and adding
+ *              new Questions and answers
  * @param {object} state contains current signed in user if available
  * @param {object} action containes the fired action
  */
