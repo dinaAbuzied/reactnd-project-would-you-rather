@@ -6,7 +6,7 @@ import "./AnsweredQuestion.css";
 class AnsweredQuestion extends Component {
     render() {
         const { text, selected, totalVoters, voters } = this.props;
-        const per = voters / totalVoters * 100;
+        const per = Math.floor(voters / totalVoters * 100);
         return (
             <div className={selected ? 'selected answered-que' : 'answered-que'}>
                 <label>Would you rather {text}</label>
