@@ -1,0 +1,30 @@
+.view-question .card {
+    width: 550px;
+    margin: 10px auto;
+}
+
+.view-question .card-body .card-title{
+    font-size: 1.7rem;
+}
+
+.view-question .card-body {
+    display: flex;
+}
+
+.view-question .img-container {
+    width: 150px;
+    display: flex;
+}
+
+.view-question .img-container img {
+    width: 100%;
+}
+
+.view-question .details {
+    padding-left: 20px;
+    border-left: 1px solid rgba(0,0,0,.125);
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}

@@ -1,0 +1,30 @@
+.answered-que {
+    background-color: rgba(0,0,0,.03);
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: 10px;
+}
+
+.answered-que.selected {
+    border-color: #007bff;
+    background: rgba(0, 123, 255, 0.2);
+}
+
+.answered-que label {
+    font-weight: 700;
+}
+
+.answered-que.selected label {
+    color: #007bff;
+}
+
+.answered-que label.voters {
+    margin: 5px 0 0;
+    display: block;
+    text-align: center;
+    color: #000;
+}
+
+.answered-que:last-child {
+    margin-top: 20px;
+}
