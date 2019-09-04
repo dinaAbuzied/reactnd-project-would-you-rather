@@ -28,17 +28,11 @@ class NewQuestion extends Component {
     }
     onSubmit = (event) => {
         event.preventDefault();
-        const { dispatch, authedUser } = this.props;
+        const { authedUser, saveQuestion } = this.props;
         this.setState({
             loading: true
         })
-        dispatch(handleSaveQuestion(
-            {
-                author: authedUser.id,
-                optionOneText: this.state.firstQue,
-                optionTwoText: this.state.secondQue
-            },
-            "/home")).then(() => {
+        saveQuestion(authedUser.id, this.state.firstQue, this.state.secondQue).then(() => {
                 this.setState({
                     redirect: true
                 })
@@ -96,4 +90,18 @@ const mapStateToProps = ({ authedUser }) => {
     }
 }
 
-export default connect(mapStateToProps)(NewQuestion) 
+const mapDispatchToProps = dispatch => {
+    return {
+        saveQuestion: (author, optionOneText, optionTwoText) => {
+            return dispatch(handleSaveQuestion(
+                {
+                    author,
+                    optionOneText,
+                    optionTwoText
+                },
+                "/home"))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewQuestion) 
