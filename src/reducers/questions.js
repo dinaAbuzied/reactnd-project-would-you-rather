@@ -1,4 +1,4 @@
-import { RECIEVE_QUESTIONS, NEW_QUESTION } from "../actions/questions";
+import { RECIEVE_QUESTIONS, NEW_QUESTION, ANSWER_QUESTION } from "../actions/questions";
 
 /**
  * @description this reducer handles the actions handling 
@@ -13,10 +13,21 @@ const questions = (state = {}, action) => {
         case RECIEVE_QUESTIONS:
             return { ...action.questions };
         case NEW_QUESTION:
-            return { 
+            return {
                 ...state,
                 [action.question.id]: action.question
-             };
+            };
+        case ANSWER_QUESTION:
+            return {
+                ...state,
+                [action.qid]: {
+                    ...state[action.qid],
+                    [action.answer]: {
+                        ...state[action.qid][action.answer],
+                        votes: [...state[action.qid][action.answer].votes, action.authedUser]
+                    }
+                }
+            }
         default:
             return state;
     }

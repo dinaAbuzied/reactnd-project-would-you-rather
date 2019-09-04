@@ -1,4 +1,4 @@
-import { RECIEVE_USERS, ADD_QUESTION_TO_USER } from "../actions/users";
+import { RECIEVE_USERS, ADD_QUESTION_TO_USER, ADD_ANSWER_TO_USER } from "../actions/users";
 
 /**
  * @description this reducer handles the actions handling 
@@ -17,6 +17,17 @@ const users = (state = {}, action) => {
                 [action.userID] : {
                     ...state[action.userID],
                     questions: [...state[action.userID].questions, action.queID]
+                }
+            }
+        case ADD_ANSWER_TO_USER:
+            return {
+                ...state,
+                [action.userid] : {
+                    ...state[action.userid],
+                    answers: {
+                        ...state[action.userid].answers,
+                        [action.qid]: action.answer
+                    }
                 }
             }
         default:

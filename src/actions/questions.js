@@ -1,5 +1,6 @@
 export const RECIEVE_QUESTIONS = "RECIEVE_QUESTIONS";
 export const NEW_QUESTION = "NEW_QUESTION";
+export const ANSWER_QUESTION = "ANSWER_QUESTION";
 
 /**
  * @description used to retrieve from the API set of question
@@ -22,5 +23,20 @@ export const saveNewQuestion = (question) => {
     return {
         type: NEW_QUESTION,
         question
+    }
+}
+
+/**
+ * @param {string} authedUser id of the current authed user
+ * @param {string} qid id of the selected question
+ * @param {string} answer string representing selected option 
+ *                          (either 'optionOne' - 'optionTwo')
+ */
+export const answerQuestion = (authedUser, qid, answer) => {
+    return {
+        type: ANSWER_QUESTION,
+        authedUser,
+        qid,
+        answer
     }
 }

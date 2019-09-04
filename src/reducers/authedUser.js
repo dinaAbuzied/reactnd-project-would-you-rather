@@ -1,4 +1,4 @@
-import { SET_AUTHED_USER, REMOVE_AUTHED_USER, ADD_QUESTION_TO_AUTHED_USER } from "../actions/authedUser";
+import { SET_AUTHED_USER, REMOVE_AUTHED_USER, ADD_QUESTION_TO_AUTHED_USER, ADD_ANSWER_TO_AUTHED_USER } from "../actions/authedUser";
 
 /**
  * @description this reducer handles the actions handling 
@@ -18,6 +18,14 @@ const authedUser = (state = null, action) => {
             return {
                 ...state,
                 questions: [...state.questions, action.id]
+            }
+        case ADD_ANSWER_TO_AUTHED_USER: 
+            return {
+                ...state,
+                answers: {
+                    ...state.answers,
+                    [action.qid]: action.answer
+                }
             }
         default:
             return state;

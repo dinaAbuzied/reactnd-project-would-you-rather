@@ -1,6 +1,7 @@
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
 export const REMOVE_AUTHED_USER = "REMOVE_AUTHED_USER";
 export const ADD_QUESTION_TO_AUTHED_USER = " ADD_QUESTION_TO_AUTHED_USER";
+export const ADD_ANSWER_TO_AUTHED_USER = " ADD_ANSWER_TO_AUTHED_USER";
 
 /**
  * @param {{answers:{}, avatarURL: string, id: string, name: string, questions: []}} user 
@@ -30,5 +31,18 @@ export const addQuestionToAuthedUser = (id) => {
     return {
         type:  ADD_QUESTION_TO_AUTHED_USER,
         id
+    }
+}
+
+/**
+ * @param {string} qid id of the selected question
+ * @param {string} answer string representing selected option 
+ *                          (either 'optionOne' - 'optionTwo')
+ */
+export const addAnswerToAuthedUser = (qid, answer) => {
+    return {
+        type:  ADD_ANSWER_TO_AUTHED_USER,
+        qid,
+        answer
     }
 }

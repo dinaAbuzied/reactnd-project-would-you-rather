@@ -1,9 +1,9 @@
 import { getInitialData } from "../utils/api";
 import { setPath } from "./path";
-import { recieveQuestions, saveNewQuestion } from "./questions";
-import { recieveUsers, addQuestionToUser } from "./users";
-import { addQuestionToAuthedUser } from "./authedUser";
-import { saveQuestion } from "../utils/api";
+import { recieveQuestions, saveNewQuestion, answerQuestion } from "./questions";
+import { recieveUsers, addQuestionToUser, addAnswerToUser } from "./users";
+import { addQuestionToAuthedUser, addAnswerToAuthedUser } from "./authedUser";
+import { saveQuestion, saveQuestionAnswer } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 /**
@@ -31,6 +31,17 @@ export const handleSaveQuestion = (que, path) => {
             dispatch(addQuestionToAuthedUser(formattedQue.id));
             dispatch(addQuestionToUser(formattedQue.author, formattedQue.id));
             dispatch(setPath(path));
+        });
+    }
+}
+
+export const handleSaveQuestionAnswer = (authedUser, qid, answer, path) => {
+    return (dispatch) => {
+        return saveQuestionAnswer({ authedUser, qid, answer }).then(() => {
+            dispatch(addAnswerToAuthedUser(qid, answer));
+            dispatch(addAnswerToUser(authedUser, qid, answer));
+            dispatch(answerQuestion(authedUser, qid, answer));
+            // dispatch(setPath(path));
         });
     }
 }
